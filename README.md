@@ -1,23 +1,32 @@
-# Next.js + Tailwind CSS Example
+# Genesis Fullstack Test
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+This repository is the starting point for a live-coding session.
 
-## Deploy your own
+## Techonogies
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+This repository is a Next.js application written in Typescript. It uses Tailwind CSS for styling.
+You can get familiar with the technologies beforehand, but please do not start the exercise before our live session.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+You'll be sharing your screen and can use the text editor of your choice.
 
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+To start coding, run the follwing commands:
 
 ```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-# or
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
+yarn
+yarn dev
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## Exercise
+
+The `/data` directory contains some JSON data files. You can get familiar with their schema before starting the exercise.
+
+- `data/indicators.json` contains the description of our indicators and indexes.
+- `data/dependencies.json` contains the dependencies between our indexes, indicators, and measures.
+
+You will be asked to write a small application that will:
+
+- have a search bar that allows searching for an item (index, indicator)
+- once an item is selected, display its description and dependencies
+- when clicking on a dependency, show its page.
+
+You may not have time to finish it all, the important is to be able to walk me through your choices and reasoning.

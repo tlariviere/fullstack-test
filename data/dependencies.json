@@ -1,0 +1,222 @@
+{
+  "dependencies": {
+    "impactRating": {
+      "dependencies": [
+        "waterImpact",
+        "climateImpact",
+        "biodiversityImpact",
+        "yieldImpact"
+      ],
+      "type": "global_score",
+      "dependencies_type": "index",
+      "operation": "not implemented"
+    },
+    "waterImpact": {
+      "dependencies": [
+        "erosion",
+        "pollution",
+        "soil_health_denitrification_potential",
+        "nitrate_ammonification_nitrification"
+      ],
+      "type": "index",
+      "dependencies_type": "indicator",
+      "operation": "geometric mean",
+      "weights": {
+        "soil_health_denitrification_potential": 10,
+        "nitrate_ammonification_nitrification": 10,
+        "pollution": 60,
+        "erosion": 20
+      }
+    },
+    "erosion": {
+      "dependencies": ["erosion"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "greenbackend.datapipelines.scoring.abstract_normalizer.AbstractNormalizer.descending_score"
+    },
+    "pollution": {
+      "dependencies": [
+        "Salinization",
+        "N_NO3_G",
+        "Cu_tot_AR",
+        "Ni_tot_AR",
+        "Cr_tot_AR",
+        "Cd_tot_AR",
+        "Pb_tot_AR",
+        "Zn_tot_AR",
+        "Hg_tot_AR"
+      ],
+      "type": "index",
+      "dependencies_type": "indicator",
+      "operation": "geometric average of the minimal value of the normalised indicators and of the geometric average of the other normalised indicators"
+    },
+    "Salinization": {
+      "dependencies": ["EC", "SAR", "ESP"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "triplet space partition"
+    },
+    "N_NO3_G": {
+      "dependencies": ["N_NO3_G"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "greenbackend.datapipelines.scoring.abstract_normalizer.AbstractNormalizer.descending_score"
+    },
+    "Cu_tot_AR": {
+      "dependencies": ["Cu_tot_AR"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "greenbackend.datapipelines.scoring.abstract_normalizer.AbstractNormalizer.descending_score"
+    },
+    "Ni_tot_AR": {
+      "dependencies": ["Ni_tot_AR"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "greenbackend.datapipelines.scoring.abstract_normalizer.AbstractNormalizer.descending_score"
+    },
+    "Cr_tot_AR": {
+      "dependencies": ["Cr_tot_AR"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "greenbackend.datapipelines.scoring.abstract_normalizer.AbstractNormalizer.descending_score"
+    },
+    "Cd_tot_AR": {
+      "dependencies": ["Cd_tot_AR"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "greenbackend.datapipelines.scoring.abstract_normalizer.AbstractNormalizer.descending_score"
+    },
+    "Pb_tot_AR": {
+      "dependencies": ["Pb_tot_AR"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "greenbackend.datapipelines.scoring.abstract_normalizer.AbstractNormalizer.descending_score"
+    },
+    "Zn_tot_AR": {
+      "dependencies": ["Zn_tot_AR"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "greenbackend.datapipelines.scoring.abstract_normalizer.AbstractNormalizer.descending_score"
+    },
+    "Hg_tot_AR": {
+      "dependencies": ["Hg_tot_AR"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "greenbackend.datapipelines.scoring.abstract_normalizer.AbstractNormalizer.descending_score"
+    },
+    "soil_health_denitrification_potential": {
+      "dependencies": ["soil_health_denitrification_potential"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "greenbackend.datapipelines.scoring.biodiversity.BiodiversityIndicatorsNormalizer.descending_score"
+    },
+    "nitrate_ammonification_nitrification": {
+      "dependencies": [
+        "soil_health_nitrate_ammonification_potential",
+        "soil_health_nitrification_potential"
+      ],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "greenbackend.datapipelines.scoring.biodiversity.BiodiversityIndicatorsNormalizer.2D_optimum_score"
+    },
+    "yieldImpact": {
+      "dependencies": [
+        "swhc",
+        "pollution",
+        "erosion",
+        "Cactive_AMG_re6_corrCHN",
+        "TOC_CHN",
+        "Cstable_TOC_re6_ratio",
+        "soil_health_bacterial_diversity",
+        "soil_health_oxygen_availability"
+      ],
+      "type": "index",
+      "dependencies_type": "indicator",
+      "operation": "geometric mean",
+      "weights": {
+        "soil_health_oxygen_availability": 6.5,
+        "soil_health_bacterial_diversity": 13.5,
+        "TOC_CHN": 10.0,
+        "Cactive_AMG_re6_corrCHN": 15.0,
+        "Cstable_TOC_re6_ratio": 10.0,
+        "pollution": 20.0,
+        "erosion": 8.0,
+        "swhc": 17.0
+      }
+    },
+    "swhc": {
+      "dependencies": ["swhc"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": null
+    },
+    "Cactive_AMG_re6_corrCHN": {
+      "dependencies": ["Cactive_AMG_re6_corrCHN"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "greenbackend.datapipelines.scoring.abstract_normalizer.AbstractNormalizer.ascending_score"
+    },
+    "TOC_CHN": {
+      "dependencies": ["TOC_CHN", "perc_clay_sed"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "parametrized ascending sigmoid"
+    },
+    "Cstable_TOC_re6_ratio": {
+      "dependencies": ["Cstable_TOC_re6_ratio"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "smoothed optimum score"
+    },
+    "soil_health_bacterial_diversity": {
+      "dependencies": ["soil_health_bacterial_diversity"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "greenbackend.datapipelines.scoring.biodiversity.BiodiversityIndicatorsNormalizer.ascending_score"
+    },
+    "soil_health_oxygen_availability": {
+      "dependencies": ["soil_health_oxygen_availability"],
+      "type": "indicator",
+      "dependencies_type": "measures",
+      "operation": "greenbackend.datapipelines.scoring.biodiversity.BiodiversityIndicatorsNormalizer.ascending_score"
+    },
+    "climateImpact": {
+      "dependencies": [
+        "TOC_CHN",
+        "Cstable_TOC_re6_ratio",
+        "soil_health_denitrification_potential"
+      ],
+      "type": "index",
+      "dependencies_type": "indicator",
+      "operation": "geometric mean",
+      "weights": {
+        "soil_health_denitrification_potential": 30,
+        "TOC_CHN": 25,
+        "Cstable_TOC_re6_ratio": 45
+      }
+    },
+    "biodiversityImpact": {
+      "dependencies": [
+        "pollution",
+        "Cactive_AMG_re6_corrCHN",
+        "Cstable_TOC_re6_ratio",
+        "soil_health_bacterial_diversity",
+        "soil_health_denitrification_potential",
+        "soil_health_oxygen_availability",
+        "nitrate_ammonification_nitrification"
+      ],
+      "type": "index",
+      "dependencies_type": "indicator",
+      "operation": "geometric mean",
+      "weights": {
+        "soil_health_oxygen_availability": 13.5,
+        "soil_health_bacterial_diversity": 22.5,
+        "soil_health_denitrification_potential": 4.5,
+        "nitrate_ammonification_nitrification": 4.5,
+        "Cactive_AMG_re6_corrCHN": 15,
+        "Cstable_TOC_re6_ratio": 15,
+        "pollution": 25
+      }
+    }
+  }
+}
