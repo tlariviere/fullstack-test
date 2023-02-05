@@ -9,10 +9,10 @@ type IndicatorCode = keyof typeof indicators;
 type Indicator = typeof indicators[IndicatorCode] & { description_en?: string };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = Object.keys(indicators);
+  const codes = Object.keys(indicators);
 
   return {
-    paths,
+    paths: codes.map((code) => ({ params: { code } })),
     fallback: "blocking",
   };
 };
